@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Recipe Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="app-header">
+    <div class="logo">Smart Recipe Generator</div>
+    <div class="header-badge">Demo • HTML • CSS • JS</div>
+  </header>
+
+  <main class="app-main">
+    <section class="controls-panel">
+      <h2>1. Add Your Ingredients</h2>
+
+      <label class="field-label" for="ingredient-input">
+        Type ingredients (comma separated) and press “Add”:
+      </label>
+      <div class="input-row">
+        <input id="ingredient-input" type="text" placeholder="e.g. tomato, onion, rice, egg" />
+        <button id="add-ingredient-btn" class="btn primary">Add</button>
+      </div>
+
+      <div class="chips-label">Your ingredient list:</div>
+      <div id="ingredient-chips" class="chips-container empty-state">
+        No ingredients yet. Add some!
+      </div>
+
+      <h3>or Quick Add</h3>
+      <div class="quick-ingredients">
+        <button class="chip-btn" data-ingredient="tomato">Tomato</button>
+        <button class="chip-btn" data-ingredient="onion">Onion</button>
+        <button class="chip-btn" data-ingredient="potato">Potato</button>
+        <button class="chip-btn" data-ingredient="rice">Rice</button>
+        <button class="chip-btn" data-ingredient="paneer">Paneer</button>
+        <button class="chip-btn" data-ingredient="chicken">Chicken</button>
+        <button class="chip-btn" data-ingredient="egg">Egg</button>
+        <button class="chip-btn" data-ingredient="milk">Milk</button>
+      </div>
+
+      <hr class="divider" />
+
+      <h2>2. Ingredient Recognition from Image</h2>
+      <p class="hint">
+        Upload a food/ingredient photo. This demo uses a simple
+        file-name–based classifier (rename images like
+        <strong>tomato.jpg</strong>, <strong>onion.png</strong>, etc.).
+      </p>
+      <input id="image-input" type="file" accept="image/*" />
+      <button id="detect-image-btn" class="btn secondary">Detect Ingredients</button>
+      <div id="image-detect-result" class="detect-result"></div>
+
+      <hr class="divider" />
+
+      <h2>3. Dietary Preferences</h2>
+      <div class="diet-grid">
+        <label><input type="checkbox" class="diet-check" value="vegetarian" /> Vegetarian</label>
+        <label><input type="checkbox" class="diet-check" value="vegan" /> Vegan</label>
+        <label><input type="checkbox" class="diet-check" value="gluten-free" /> Gluten-free</label>
+        <label><input type="checkbox" class="diet-check" value="dairy-free" /> Dairy-free</label>
+      </div>
+
+      <h2>4. Filters & Customization</h2>
+      <div class="filters-grid">
+        <div>
+          <label class="field-label" for="difficulty-select">Difficulty</label>
+          <select id="difficulty-select">
+            <option value="any">Any</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+        <div>
+          <label class="field-label" for="max-time-input">Max cooking time (min)</label>
+          <input id="max-time-input" type="number" min="0" placeholder="e.g. 45" />
+        </div>
+        <div>
+          <label class="field-label" for="servings-input">Target servings</label>
+          <input id="servings-input" type="number" min="1" value="2" />
+        </div>
+      </div>
+
+      <button id="find-recipes-btn" class="btn primary full-width">
+        Find Recipes
+      </button>
+      <div id="error-msg" class="error-msg"></div>
+    </section>
+
+    <section class="results-panel">
+      <div class="results-header">
+        <h2>Matched Recipes</h2>
+        <span id="results-count" class="results-count">0 found</span>
+      </div>
+      <div id="recipes-container" class="recipes-container">
+        <p class="hint">
+          Add ingredients and click <strong>Find Recipes</strong> to see suggestions.
+        </p>
+      </div>
+
+      <section class="suggested-panel">
+        <div class="results-header">
+          <h2>Suggested for You</h2>
+        </div>
+        <div id="suggested-container" class="recipes-container small"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>Made for Smart Recipe Generator project • Frontend-only demo</span>
+  </footer>
+  <script src="index.js"></script>
+</body>
+
+</html>
